@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	helper "command-line-arguments/Users/daniel/Desktop/playground/daniel-functions/daniel-functions/function2/helper/halper.go"
+	"github.com/memphis-dev-fucntions/example-function2/helper"
 
 	"github.com/aws/aws-lambda-go/lambda"
 )
