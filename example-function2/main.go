@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/memphis-dev-fucntions/example-function2/helper"
+	helper "example-function2/helper"
 
 	"github.com/aws/aws-lambda-go/lambda"
 )
