@@ -2,9 +2,8 @@ package main
 
 import (
 	"context"
+	"example-function2/helper"
 	"fmt"
-
-	helper "example-function2/helper"
 
 	"github.com/aws/aws-lambda-go/lambda"
 )
@@ -14,7 +13,7 @@ type MyEvent struct {
 }
 
 func HandleRequest(ctx context.Context, name MyEvent) (string, error) {
-	return fmt.Sprintf("Hello %s!", helper.GetName(name)), nil
+	return fmt.Sprintf("Hello %s!", helper.GetName(name.Data)), nil
 }
 
 func main() {
