@@ -1,19 +1,38 @@
 package main
 
 import (
-        "fmt"
-        "context"
-        "github.com/aws/aws-lambda-go/lambda"
+	"context"
+	"strings"
+
+	"github.com/aws/aws-lambda-go/lambda"
 )
 
-type MyEvent struct {
-        Name string `json:"name"`
+type MemphisMsg struct {
+	Headers map[string]string `json:"headers"`
+	Payload []byte            `json:"payload"`
 }
 
-func HandleRequest(ctx context.Context, name MyEvent) (string, error) {
-        return fmt.Sprintf("Hello %s!", name.Name ), nil
+type MemphisEvent struct {
+	Messages []MemphisMsg `json:"messages"`
+}
+
+func HandleRequest(ctx context.Context, event MemphisEvent) (MemphisEvent, error) {
+	var processedEvent MemphisEvent
+	for _, msg := range event.Messages {
+	        msgStr := string(msg.Payload)
+		if strings.Contains(msgStr, "error") {
+			msgStr = strings.Replace(msgStr, "error", "hello", -1)
+		}
+
+		processedEvent.Messages = append(processedEvent.Messages, MemphisMsg{
+			Headers: msg.Headers,
+			Payload: []byte(msgStr),
+		})
+	}
+
+	return processedEvent, nil
 }
 
 func main() {
-        lambda.Start(HandleRequest)
+	lambda.Start(HandleRequest)
 }
