@@ -2,19 +2,37 @@ package main
 
 import (
 	"encoding/json"
-	"fmt"
-	"os"
+	"context"
+	"github.com/aws/aws-lambda-go/lambda"
 )
 
-func RemoveFields(keysToRemove []string, msg_map *map[string]interface{}){
-	RemoveFieldsInner := func(keysToRemove []string, msgMapSubset *map[string]interface{}){
-		var RecursiveRemove func([]string, *map[string]interface{})
+type MemphisMsg struct {
+	Headers map[string]string `json:"headers"`
+	Payload []byte            `json:"payload"`
+}
+
+type MemphisMsgWithError struct{
+	Headers map[string]string `json:"headers"`
+	Payload []byte            `json:"payload"`
+	Error string			  `json:"error"`
+}
+
+type MemphisEvent struct {
+	Messages []MemphisMsg `json:"messages"`
+	FailedMessages []MemphisMsgWithError `json:"failedMessages"`
+}
+
+var keysToRemove[2]string
+
+func RemoveFields(msg_str *string) ([]byte, error){
+	RemoveFieldsInner := func(msgMapSubset *map[string]interface{}){
+		var RecursiveRemove func(*map[string]interface{})
 
 		// Sorta like a depth first search but it deletes the keys specified on the way out 
-		RecursiveRemove = func(keysToRemove []string, msgMapSubset *map[string]interface{}){
+		RecursiveRemove = func(msgMapSubset *map[string]interface{}){
 			for _, value := range *msgMapSubset{
 				if  val_cast, ok := value.(map[string]interface{}); ok  {
-					RecursiveRemove(keysToRemove, &val_cast)
+					RecursiveRemove(&val_cast)
 				}
 			}
 
@@ -22,34 +40,53 @@ func RemoveFields(keysToRemove []string, msg_map *map[string]interface{}){
 				delete(*msgMapSubset, value)
 			}
 		}
-		RecursiveRemove(keysToRemove, msgMapSubset)	
+		RecursiveRemove(msgMapSubset)	
 	}
 	
-	RemoveFieldsInner(keysToRemove, msg_map)
+	var msg_map map[string]interface{}
+
+	if err := json.Unmarshal([]byte(*msg_str), &msg_map); err != nil{
+		return nil, err
+	}	
+
+	RemoveFieldsInner(&msg_map)
+	
+	if msgStr, err := json.Marshal(msg_map); err != nil{
+		return msgStr, nil
+	}else{
+		return nil, err
+	}
 }
 
+func RemoveFieldsHandler(ctx context.Context, event *MemphisEvent) (*MemphisEvent, error) {
+	var processedEvent MemphisEvent
+	for _, msg := range event.Messages {
+	    msgStr := string(msg.Payload)
+
+		msgStrRemovedFields, err := RemoveFields(&msgStr)
+
+		if err != nil{
+			processedEvent.FailedMessages = append(processedEvent.FailedMessages, MemphisMsgWithError{
+				Headers: msg.Headers,
+				Payload: []byte(msgStr),
+				Error: err.Error(),
+			})
+
+			continue
+		}
+
+		processedEvent.Messages = append(processedEvent.Messages, MemphisMsg{
+			Headers: msg.Headers,
+			Payload: msgStrRemovedFields,
+		})
+	}
+
+	return &processedEvent, nil
+}
 
 func main() {
-	file, err := os.ReadFile("./fieldRemovalJson.json")
-	if err != nil{
-		panic(err)
-	}
-
-	var msg_map map[string]interface{}
+	keysToRemove[0] = "remove_me"
+	keysToRemove[1] = "me_too"
 	
-	if err := json.Unmarshal(file, &msg_map); err != nil{
-		panic(err) // How should lambda functions fail gracefully? DLS?
-	}
-
-	var fields_to_remove []string
-	fields_to_remove = append(fields_to_remove, "remove_me", "me_too")
-	RemoveFields(fields_to_remove, &msg_map)
-
-	prettyJSON, err := json.MarshalIndent(msg_map, "", "  ")
-	if err != nil {
-		fmt.Println("Error:", err)
-		return
-	}
-
-	fmt.Println(string(prettyJSON))
+	lambda.Start(RemoveFieldsHandler)
 }
