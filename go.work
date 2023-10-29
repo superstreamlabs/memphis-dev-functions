@@ -4,3 +4,4 @@ use ./example-function2
 use ./flatten_json
 use ./remove_fields
 use ./add_severity
+use ./flatten_json_create_function
