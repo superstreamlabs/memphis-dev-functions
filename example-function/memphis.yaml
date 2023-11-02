@@ -1,4 +1,4 @@
-function_name: Example function
+function_name: example-function
 description: This is a description
 tags:
   - tag: tag1
