@@ -2,29 +2,12 @@ package main
 
 import (
 	"encoding/json"
-	"context"
-	"github.com/aws/aws-lambda-go/lambda"
+	"github.com/memphisdev/memphis.go"
 )
-
-type MemphisMsg struct {
-	Headers map[string]string `json:"headers"`
-	Payload []byte            `json:"payload"`
-}
-
-type MemphisMsgWithError struct{
-	Headers map[string]string `json:"headers"`
-	Payload []byte            `json:"payload"`
-	Error string			  `json:"error"`
-}
-
-type MemphisEvent struct {
-	Messages []MemphisMsg `json:"messages"`
-	FailedMessages []MemphisMsgWithError `json:"failedMessages"`
-}
 
 var keysToRemove[2]string
 
-func RemoveFields(msg_str *string) ([]byte, error){
+func RemoveFields(message []byte, headers map[string]string) ([]byte, map[string]string,  error){
 	RemoveFieldsInner := func(msgMapSubset *map[string]interface{}){
 		var RecursiveRemove func(*map[string]interface{})
 
@@ -45,48 +28,23 @@ func RemoveFields(msg_str *string) ([]byte, error){
 	
 	var msg_map map[string]interface{}
 
-	if err := json.Unmarshal([]byte(*msg_str), &msg_map); err != nil{
-		return nil, err
+	if err := json.Unmarshal(message, &msg_map); err != nil{
+		return nil, nil, err
 	}	
 
 	RemoveFieldsInner(&msg_map)
 	
 	if msgStr, err := json.Marshal(msg_map); err != nil{
-		return msgStr, nil
+		return msgStr, headers, nil
 	}else{
-		return nil, err
+		return nil, nil, err
 	}
 }
 
-func RemoveFieldsHandler(ctx context.Context, event *MemphisEvent) (*MemphisEvent, error) {
-	var processedEvent MemphisEvent
-	for _, msg := range event.Messages {
-	    msgStr := string(msg.Payload)
-
-		msgStrRemovedFields, err := RemoveFields(&msgStr)
-
-		if err != nil{
-			processedEvent.FailedMessages = append(processedEvent.FailedMessages, MemphisMsgWithError{
-				Headers: msg.Headers,
-				Payload: []byte(msgStr),
-				Error: err.Error(),
-			})
-
-			continue
-		}
-
-		processedEvent.Messages = append(processedEvent.Messages, MemphisMsg{
-			Headers: msg.Headers,
-			Payload: msgStrRemovedFields,
-		})
-	}
-
-	return &processedEvent, nil
-}
 
 func main() {
 	keysToRemove[0] = "remove_me"
 	keysToRemove[1] = "me_too"
 	
-	lambda.Start(RemoveFieldsHandler)
+	memphis.CreateFunction(RemoveFields)
 }
