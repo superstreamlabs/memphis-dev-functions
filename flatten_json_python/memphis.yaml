@@ -2,12 +2,7 @@ function_name: Flatten JSON
 description: Takes a deep JSON objects and flattens it into a 1d representation but in python this time
 # tags:
 #   - tag: tag1
-# Runtime can be any of the available lambda runtimes.
 runtime: python3.10 # nodejs | nodejs4.3-edge | nodejs4.3 | nodejs6.10 | nodejs8.10 | nodejs10.x | nodejs12.x | nodejs14.x | nodejs16.x | nodejs18.x | python2.7 | python3.6 | python3.7 | python3.8 | python3.9 | python3.10 | python3.11 | dotnetcore1.0 | dotnetcore2.0 | dotnetcore2.1 | dotnetcore3.1 | dotnet6
-# dependencies: go.mod
-# environment_vars:
-#   - name: ENV_1
-#     value: env1
 memory: 128
 storage: 128
-# handler:
+handler: flatten.handler

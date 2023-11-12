@@ -2,12 +2,10 @@ from memphis.functions import create_function
 import json
 
 """
-Lambda handler required by Lambda -- where Memphis Functions run. 
 Python requires data getting returned, so make sure to return create_function(...)
 Make sure to pass both the context and event to the created function
-The context is required by Lambda, but is not used by Memphis create_function 
 """
-def lambda_handler(event, context):
+def handler(event, context):
     return create_function(event=event, user_func = flatten_wrapper)
 
 def flatten_wrapper(message_payload, headers):

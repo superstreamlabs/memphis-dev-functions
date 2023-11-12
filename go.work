@@ -1,6 +1,5 @@
-go 1.21.1
+go 1.21
 
-use ./example-function2
 use ./flatten_json
 use ./remove_fields
 use ./add_severity
