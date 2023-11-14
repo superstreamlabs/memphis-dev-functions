@@ -19,6 +19,8 @@ github.com/json-iterator/go v1.1.12 h1:PV8peI4a0ysnczrg+LtxykD8LfKY9ML6u2jnxaEnr
 github.com/json-iterator/go v1.1.12/go.mod h1:e30LSqwooZae/UwlEbR2852Gd8hjQvJoHmT4TnhNGBo=
 github.com/memphisdev/memphis.go v1.1.6-beta.1.0.20231109120637-72dc324c2b8d h1:vJu1nxKj+pssCdmKyGRC0e5wP8LR3Qc24sbWmt9wvrw=
 github.com/memphisdev/memphis.go v1.1.6-beta.1.0.20231109120637-72dc324c2b8d/go.mod h1:UO1VLgnkbmAb/tmqtVAWK6q01vuYL0y6CgqCzW4md84=
+github.com/memphisdev/memphis.go v1.1.8-beta.1 h1:dZptQqpC1YLX+xn6Zzxpg7K5F0J1VY1C02LyzXrmywk=
+github.com/memphisdev/memphis.go v1.1.8-beta.1/go.mod h1:UO1VLgnkbmAb/tmqtVAWK6q01vuYL0y6CgqCzW4md84=
 github.com/mitchellh/mapstructure v1.5.0 h1:jeMsZIYE/09sWLaz43PL7Gy6RuMjD2eJVyuac5Z2hdY=
 github.com/mitchellh/mapstructure v1.5.0/go.mod h1:bFUtVrKA4DC2yAKiSyO/QUcy7e+RRV2QTWOzhPopBRo=
 github.com/modern-go/concurrent v0.0.0-20180228061459-e0a39a4cb421/go.mod h1:6dJC0mAP4ikYIbvyc7fijjWJddQyLn8Ig3JB5CqoB9Q=
