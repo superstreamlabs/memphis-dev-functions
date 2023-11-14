@@ -4,3 +4,6 @@ description: Adds a severity marker to the memphis messages depending on how whe
 #   - tag: tag1
 runtime: go # nodejs | nodejs16.x | nodejs18.x | python3.8 | python3.9 | python3.10 | python3.11
 dependencies: go.mod
+inputs:
+  - name: input1
+  - name: input2
