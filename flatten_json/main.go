@@ -6,7 +6,7 @@ import (
 	"github.com/memphisdev/memphis.go"	
 )
 
-func FlattenMessages(message []byte, headers map[string]string) ([]byte, map[string]string, error) {
+func FlattenMessages(message []byte, headers map[string]string, inputs map[string]string) ([]byte, map[string]string, error) {
 	flatten := func(out_map map[string]interface{}, value interface{}, parent_key string){
 		var recursiveFlatten func(map[string]interface{}, interface{}, string)
 

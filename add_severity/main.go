@@ -6,7 +6,7 @@ import (
 	"github.com/memphisdev/memphis.go"
 )
 
-func CheckSeverity(message []byte, headers map[string]string) ([]byte, map[string]string, error){
+func CheckSeverity(message []byte, headers map[string]string, inputs map[string]string) ([]byte, map[string]string, error){
 	var msg_map map[string]interface{}
 
 	if err := json.Unmarshal([]byte(message), &msg_map); err != nil{

@@ -7,7 +7,7 @@ import (
 
 var keysToRemove[2]string
 
-func RemoveFields(message []byte, headers map[string]string) ([]byte, map[string]string,  error){
+func RemoveFields(message []byte, headers map[string]string, inputs map[string]string) ([]byte, map[string]string,  error){
 	RemoveFieldsInner := func(msgMapSubset *map[string]interface{}){
 		var RecursiveRemove func(*map[string]interface{})
 

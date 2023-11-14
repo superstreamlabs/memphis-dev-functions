@@ -1,6 +1,6 @@
-function_name: Add Severity
+function_name: add_severity
 description: Adds a severity marker to the memphis messages depending on how when messages are being produced
 # tags:
 #   - tag: tag1
-runtime: go1.19 # nodejs | nodejs4.3-edge | nodejs4.3 | nodejs6.10 | nodejs8.10 | nodejs10.x | nodejs12.x | nodejs14.x | nodejs16.x | nodejs18.x | python2.7 | python3.6 | python3.7 | python3.8 | python3.9 | python3.10 | python3.11 | dotnetcore1.0 | dotnetcore2.0 | dotnetcore2.1 | dotnetcore3.1 | dotnet6
+runtime: go # nodejs | nodejs16.x | nodejs18.x | python3.8 | python3.9 | python3.10 | python3.11
 dependencies: go.mod
