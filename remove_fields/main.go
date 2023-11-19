@@ -32,7 +32,7 @@ func RemoveFields(message []byte, headers map[string]string, inputs map[string]s
 
 	RemoveFieldsInner(&msg_map)
 
-	if msgStr, err := json.Marshal(msg_map); err != nil {
+	if msgStr, err := json.Marshal(msg_map); err == nil {
 		return msgStr, headers, nil
 	} else {
 		return nil, nil, err

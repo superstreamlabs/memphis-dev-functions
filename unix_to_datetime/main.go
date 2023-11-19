@@ -32,7 +32,7 @@ func UnixToDateTime(payload []byte, headers map[string]string, input map[string]
 		return nil, nil, &IntConversionError{message: "key input['timestamp'] returned a value that could not be convereted into an int64"}
 	}
 
-	if modifiedPayload, err := json.Marshal(payload_json); err != nil {
+	if modifiedPayload, err := json.Marshal(payload_json); err == nil {
 		return modifiedPayload, headers, nil
 	} else {
 		return nil, nil, err
