@@ -1,4 +1,4 @@
-# Example Function: Flattening JSON
+# Flattening JSON
 
 This function's goal is to take a nested JSON entry and flatten it to remove the nesting.
 
