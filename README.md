@@ -1,5 +1,14 @@
-# memphis-dev-functions
+![image](https://github.com/memphisdev/memphis-dev-functions/assets/70286779/bf9e6907-d060-44db-abbb-42efa4b630b0)
+  
+# Welcome to Memphis Functions
+Memphis Functions Is A Faster, Easier, And Dev-First Platform For<br>
+Developing Highly-Customizable Event-driven Features and Pipelines By Creating or Employing Serverless Functions.<br>
+Memphis Functions has the capability to seamlessly integrate with various streaming platforms such as Kafka, enhancing their functionality.
+<br><br>
+<strong>This repository hosts public functions created by Memphis.dev and the community,<br>accessible across all Memphis.dev deployments and the Cloud.</strong>
 
-This repository contains a collection of ready-to-use Memphis Functions. 
+## How to start
 
-Each function here is made availble through the Memphis UI. To see what each function does, check out the README.md's in each of the different directories.
+## How to develop a new function
+
+## How to contribute a new function
