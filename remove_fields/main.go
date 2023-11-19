@@ -5,8 +5,6 @@ import (
 	"github.com/memphisdev/memphis.go"
 )
 
-var keysToRemove[2]string
-
 func RemoveFields(message []byte, headers map[string]string, inputs map[string]string) ([]byte, map[string]string,  error){
 	RemoveFieldsInner := func(msgMapSubset *map[string]interface{}){
 		var RecursiveRemove func(*map[string]interface{})
@@ -19,7 +17,7 @@ func RemoveFields(message []byte, headers map[string]string, inputs map[string]s
 				}
 			}
 
-			for _, value := range keysToRemove{
+			for _, value := range inputs{
 				delete(*msgMapSubset, value)
 			}
 		}
@@ -42,9 +40,6 @@ func RemoveFields(message []byte, headers map[string]string, inputs map[string]s
 }
 
 
-func main() {
-	keysToRemove[0] = "remove_me"
-	keysToRemove[1] = "me_too"
-	
+func main() {	
 	memphis.CreateFunction(RemoveFields)
 }

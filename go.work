@@ -1,5 +1,7 @@
-go 1.21
+go 1.21.1
 
 use ./flatten_json
+
 use ./remove_fields
+
 use ./add_severity

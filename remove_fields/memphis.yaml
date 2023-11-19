@@ -1,9 +1,10 @@
 function_name: remove_fields
 description: Removes JSON values with assoicated key <remove_me> and <me_too> from a given message
-# tags:
-#   - tag: tag1
-runtime: go # nodejs | nodejs16.x | nodejs18.x | python3.8 | python3.9 | python3.10 | python3.11
+tags:
+  - tag: json
+  - tag: go
+  - tag: field removal
+runtime: go1.19 
 dependencies: go.mod
-inputs:
-  - name: input1
-  - name: input2
+memory: 128
+storage: 128
