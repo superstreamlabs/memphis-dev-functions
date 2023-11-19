@@ -1,4 +1,4 @@
-# Example Function: Add timestamp
+# Add timestamp
 
 This function's goal is to add a new field, `timestamp` that contains the time when the Function received the message. 
 
