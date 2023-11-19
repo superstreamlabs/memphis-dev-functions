@@ -1,4 +1,4 @@
-# Example Function: Unix time to Date time
+# Unix time to Date time
 
 This function's goal is to take a message that logged a time in POSIX time and convert it to a date time format.
 
