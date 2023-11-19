@@ -1,4 +1,4 @@
-# Example Function: Adding A Severity Field
+# Adding A Severity Field
 
 This function's goal is to check a field, in this case, `time_since_last_produce` and add a json field `severity` that could be used to check how well a given service is behaving. 
 
