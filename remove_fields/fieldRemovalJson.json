@@ -1,0 +1,9 @@
+{
+    "remove_me": "Noooooooooooooo!",
+    "me_too": "Aww. I thought I was safe",
+    "But_not_me": ":)",
+    "nested_remove": {
+        "remove_me": "Yup. Even in here",
+        "but_I_am_safe": ":)"
+    }
+}

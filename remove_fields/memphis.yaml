@@ -1,0 +1,7 @@
+function_name: remove_fields
+description: Removes JSON values with assoicated key <remove_me> and <me_too> from a given message
+tags:
+  - tag: json
+  - tag: go
+  - tag: field removal
+runtime: go
