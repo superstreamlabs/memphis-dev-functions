@@ -5,7 +5,4 @@ tags:
   - tag: go
   - tag: unix time
   - tag: date time
-runtime: go1.19 
-dependencies: go.mod
-memory: 128
-storage: 128
+runtime: go

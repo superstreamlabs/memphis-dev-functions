@@ -12,16 +12,7 @@ This could be used to monitor the health of the system and to make sure that lat
 
 ## Input
 
-This function requires the input to be in JSON format. Additionally, an inputs object must be supplied that contains the keys: `field`, `cutoff`, `high`, and `low`.
-
-```json
-{
-    "field": "elapsed_time",
-    "cutoff": "1000",
-    "high": "critical",
-    "low": "good"
-}
-```
+This function requires the input to be in JSON format. Additionally, the following inputs must be supplied on function attachment: `field`, `cutoff`, `high`, and `low`.
 
 The field will be the numerical field in the message checked to see if it is higher than the cutoff. The high and low are the labels for the severity that is given to the new field `severity` that will be added to label the message severity.
 

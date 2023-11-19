@@ -4,7 +4,4 @@ tags:
   - tag: json
   - tag: go
   - tag: field removal
-runtime: go1.19 
-dependencies: go.mod
-memory: 128
-storage: 128
+runtime: go
