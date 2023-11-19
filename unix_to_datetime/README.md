@@ -8,16 +8,9 @@ Some downstream service that our messages will be loaded in requires time be in 
 
 ## Input
 
-A JSON message and an input which describes the name of the field which contains the POSIX timestamp. The input must have the key `timestamp`.
+A JSON message and inputs which describe the field containing the POSIX timestamp and where the translated timestamp should go. 
 
-Here is an example input:
-
-```json
-{
-    "timestamp": "posix_time",
-    "out": "datetime"
-}
-```
+These inputs will be given as `timestamp` and `out`. The value `timestamp` contains will be the field where the POSIX timestamp is and the `out` value will be the field the translated timestamp will be put into. 
 
 ## Output
 

@@ -2,10 +2,18 @@ package main
 
 import (
 	"encoding/json"
+	"strings"
+
 	"github.com/memphisdev/memphis.go"
 )
 
 func RemoveFields(message []byte, headers map[string]string, inputs map[string]string) ([]byte, map[string]string, error) {
+	split_keys := strings.Split(inputs["keys"], ",")
+	keys := make([]string, 0)
+	for _, key := range split_keys {
+		keys = append(keys, strings.TrimSpace(key))
+	}
+
 	RemoveFieldsInner := func(msgMapSubset *map[string]interface{}) {
 		var RecursiveRemove func(*map[string]interface{})
 
@@ -17,7 +25,7 @@ func RemoveFields(message []byte, headers map[string]string, inputs map[string]s
 				}
 			}
 
-			for _, value := range inputs {
+			for _, value := range keys {
 				delete(*msgMapSubset, value)
 			}
 		}

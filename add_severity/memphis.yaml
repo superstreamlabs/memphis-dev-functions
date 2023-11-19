@@ -5,3 +5,8 @@ tags:
   - tag: go
   - tag: severity
 runtime: go
+inputs: 
+  - name: field
+  - name: cutoff
+  - name: high
+  - name: low

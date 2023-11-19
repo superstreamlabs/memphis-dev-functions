@@ -14,7 +14,7 @@ This could be used to monitor the health of the system and to make sure that lat
 
 This function requires the input to be in JSON format. Additionally, the following inputs must be supplied on function attachment: `field`, `cutoff`, `high`, and `low`.
 
-The field will be the numerical field in the message checked to see if it is higher than the cutoff. The high and low are the labels for the severity that is given to the new field `severity` that will be added to label the message severity.
+The `field` will be field in the message that is checked to see if it is higher than the cutoff. The message must have a numerical value for this field. `high` and `low` are the labels for the severity that is given to the new field `severity` that will be added to label the message severity depending on if the `field` is higher or lower than the cutoff.
 
 ## Output
 
