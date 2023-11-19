@@ -1,4 +1,4 @@
-# Example Function: Sparcify-Messages
+# Sparcify-Messages
 
 This function's goal is to remove unnnecessary fields from a JSON entry.
 
