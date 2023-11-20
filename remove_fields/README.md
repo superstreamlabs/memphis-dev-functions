@@ -10,18 +10,9 @@ A Memphis Function could be used to lighten the messages before they reach the c
 
 ## Input
 
-A JSON message and inputs which say which keys to remove.
+A JSON message and an input `keys` which is a comma separated list of keys to remove from the JSON object.
 
-Here is an example inputs:
-```json
-{
-    "remove1": "key_to_remove",
-    "remove2": "key_to_remove",
-    "remove3": "key_to_remove",
-}
-```
-
-The keys are ignored.
+Here is an example value for the `keys` inputs: `key1, key2, key3`.
 
 ## Output
 

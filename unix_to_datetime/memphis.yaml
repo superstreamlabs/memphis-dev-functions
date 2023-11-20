@@ -6,3 +6,6 @@ tags:
   - tag: unix time
   - tag: date time
 runtime: go
+inputs: 
+  - name: timestamp
+  - name: out

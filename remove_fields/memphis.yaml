@@ -5,3 +5,5 @@ tags:
   - tag: go
   - tag: field removal
 runtime: go
+inputs:
+  - name: keys
