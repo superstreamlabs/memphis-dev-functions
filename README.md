@@ -35,16 +35,17 @@ Memphis Functions has the capability to seamlessly integrate with various stream
 ## How to develop a new private function
 A function comprises code files (based on [Memphis template](https://github.com/memphisdev/memphis-dev-academy/tree/master/memphis-functions)) and a `memphis.yaml` file contained within a unified directory.<br>
 The directory ought to be included in a Git repository that's linked with Memphis.<br>
-Here is a brief hirarchy diagram of how a compatible function file tree should be constructed: <img src="https://github.com/memphisdev/memphis-dev-functions/assets/70286779/57591907-ce74-454c-a9e3-f7348db88c48" width="50%" />
+Here is a brief hierarchy diagram of how a compatible function file tree should be constructed: <img src="https://github.com/memphisdev/memphis-dev-functions/assets/70286779/57591907-ce74-454c-a9e3-f7348db88c48" width="50%" />
 <br>
 
-**Step-by-step Guide:**
+### :rocket: Step-by-step Guide:
 1. Clone or create a new repository (At the moment, support is exclusively available for GitHub.)
-2. Within the repository, establish a fresh directory and initialize it to your chosen programming language.
+2. Within this repository, establish a fresh directory and initialize it to your chosen programming language.
 ```bash
 mkdir my-function && cd my-function && npm init -y
 ```
-3. Write your code inside the `eventHandler` block.<br>Incoming events will be accumulated and dispatched to a function collectively in a batch, therefore the wrapper.
+3. [Copy](https://api.github.com/events) one of the Memphis Functions templates.
+4. *Required*. Write your logic inside the `eventHandler` block.<br>Incoming events will be accumulated and dispatched to a function collectively in a batch, therefore the wrapper.
 ```js
 export const handler = async (event) => {
     return await createFunction(event, eventHandler);
@@ -71,8 +72,22 @@ function eventHandler(payload, headers, inputs) {
 }
 ```
 Messages will return to the Memphis Station in a batch as well.<br>
-4. Connect the designated repository with your Memphis account<br>
-5. `my-function` should be available through the Functions main page or a station
+5. *Required*. Add or modify the `memphis.yaml` file based on the following template:
+```yaml
+function_name:        #Required.
+runtime:              #Required. [go | nodejs | nodejs16.x | nodejs18.x | python3.8 | python3.9 | python3.10 | python3.11]
+dependencies:         #The file name contains the list of dependencies the function making use of - default to [requirements.txt(python) / go.mod(go) / package.json (nodes)]
+handler:              #Required for node.js/Python only. The name of the function's entry point - <file name>.<function name> - for example, if your function is called 'handler' and written inside 'main.py', the handler should be main.handler
+tags:                 #List of tags
+  - tag: json
+  - tag: dev
+inputs:               #list of input fields that will be injected into your function per attachment
+  - name: timestamp
+description:          #Description
+```
+6. *Optional*. Add a README file to describe your function so others will know what to do :)
+7. Connect the designated repository with your Memphis account
+8. `my-function` should be available through the Functions main page or a station
 
 ## How to develop a new public function
 1. Fork https://github.com/memphisdev/memphis-dev-functions
