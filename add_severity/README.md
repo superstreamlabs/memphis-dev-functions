@@ -20,4 +20,4 @@ The `field` will be field in the message that is checked to see if it is higher 
 
 The given message will be modified to have an added `severity` field which denotes the how severe some condition is.
 
-Barak.
+Barak Gido
