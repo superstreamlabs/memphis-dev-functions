@@ -46,5 +46,6 @@ func FlattenMessages(message []byte, headers map[string]string, inputs map[strin
 }
 
 func main() {
+	fmt.Println("hello world") // test by shay - will remove soon
 	memphis.CreateFunction(FlattenMessages)
 }
