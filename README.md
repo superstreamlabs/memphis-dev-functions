@@ -74,7 +74,7 @@ function eventHandler(payload, headers, inputs) {
 Messages will return to the Memphis Station in a batch as well.<br>
 5. *Required*. Add or modify the `memphis.yaml` file based on the following template:
 ```yaml
-function_name:        #Required.
+function_name:        #Required. Must be equal to the directory name
 runtime:              #Required. [go | nodejs | nodejs16.x | nodejs18.x | python3.8 | python3.9 | python3.10 | python3.11]
 dependencies:         #The file name contains the list of dependencies the function making use of - default to [requirements.txt(python) / go.mod(go) / package.json (nodes)]
 handler:              #Required for node.js/Python only. The name of the function's entry point - <file name>.<function name> - for example, if your function is called 'handler' and written inside 'main.py', the handler should be main.handler
