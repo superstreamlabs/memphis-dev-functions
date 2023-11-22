@@ -40,12 +40,12 @@ Here is a brief hierarchy diagram of how a compatible function file tree should 
 
 ### :rocket: Step-by-step Guide:
 1. Clone or create a new repository (At the moment, support is exclusively available for GitHub.)
-2. Within this repository, establish a fresh directory and initialize it to your chosen programming language.
+2. Within this repository, establish a fresh directory and initialize it to your chosen programming language
 ```bash
 mkdir my-function && cd my-function && npm init -y
 ```
-3. [Copy](https://api.github.com/events) one of the Memphis Functions templates.
-4. *Required*. Write your logic inside the `eventHandler` block.<br>Incoming events will be accumulated and dispatched to a function collectively in a batch, therefore the wrapper.
+3. [Copy](https://api.github.com/events) one of the Memphis Functions templates. For this guide, we chose Node.js
+4. *Required*. Write your logic inside the `eventHandler` block.<br>Incoming events will be accumulated and dispatched to a function collectively in a batch, therefore the wrapper
 ```js
 export const handler = async (event) => {
     return await createFunction(event, eventHandler);
