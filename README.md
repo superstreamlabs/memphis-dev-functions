@@ -40,12 +40,12 @@ Here is a brief hierarchy diagram of how a compatible function file tree should 
 
 ### :rocket: Step-by-step Guide:
 1. Clone or create a new repository (At the moment, support is exclusively available for GitHub.)
-2. Within this repository, establish a fresh directory and initialize it to your chosen programming language.
+2. Within this repository, establish a fresh directory and initialize it to your chosen programming language
 ```bash
 mkdir my-function && cd my-function && npm init -y
 ```
-3. [Copy](https://api.github.com/events) one of the Memphis Functions templates.
-4. *Required*. Write your logic inside the `eventHandler` block.<br>Incoming events will be accumulated and dispatched to a function collectively in a batch, therefore the wrapper.
+3. [Copy](https://api.github.com/events) one of the Memphis Functions templates. For this guide, we chose Node.js
+4. *Required*. Write your logic inside the `eventHandler` block.<br>Incoming events will be accumulated and dispatched to a function collectively in a batch, therefore the wrapper
 ```js
 export const handler = async (event) => {
     return await createFunction(event, eventHandler);
@@ -74,7 +74,7 @@ function eventHandler(payload, headers, inputs) {
 Messages will return to the Memphis Station in a batch as well.<br>
 5. *Required*. Add or modify the `memphis.yaml` file based on the following template:
 ```yaml
-function_name:        #Required.
+function_name:        #Required. Must be equal to the directory name
 runtime:              #Required. [go | nodejs | nodejs16.x | nodejs18.x | python3.8 | python3.9 | python3.10 | python3.11]
 dependencies:         #The file name contains the list of dependencies the function making use of - default to [requirements.txt(python) / go.mod(go) / package.json (nodes)]
 handler:              #Required for node.js/Python only. The name of the function's entry point - <file name>.<function name> - for example, if your function is called 'handler' and written inside 'main.py', the handler should be main.handler
