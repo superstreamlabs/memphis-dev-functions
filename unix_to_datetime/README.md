@@ -1,17 +1,37 @@
-# Unix time to Date time
+# Unix time to date time
+## Description
+Unix time to date time takes a given POSIX time and converts it to a more human readable date time format. 
+## Supported event formats
+JSON 
+## Inputs:
+Input name | Description | Type
+|---|---|---|
+| timestamp | The field that contians the POSIX time | string |
+| out | The field where the date time format will be stored | string |
+## Test event 
 
-This function's goal is to take a message that logged a time in POSIX time and convert it to a date time format.
+### Inputs
+Input name | Value
+|---|---|
+| timestamp | posix_time
+| out | date_time
 
-## Example Use Case Definition
+### Event:
 
-Some downstream service that our messages will be loaded in requires time be in a date time format for it to work. This function could run before messages were ingested into that service so that the time was in the right format.
+```json
+{
+    "id": 1,
+    "posix_time": "1700003853"
+}
+```
 
-## Input
+## Output to the test event
 
-A JSON message and inputs which describe the field containing the POSIX timestamp and where the translated timestamp should go. 
-
-These inputs will be given as `timestamp` and `out`. The value `timestamp` contains will be the field where the POSIX timestamp is and the `out` value will be the field the translated timestamp will be put into. 
-
-## Output
-
-A JSON message which has the given `out` key's value set to a date time representation of that time. Make `out` the same as `timestamp` to modify the object in place.
+### Modified Event:
+```json
+{
+    "id": 1,
+    "posix_time": "1700003853",
+    "date_time": "2023-11-14 17:17:33 -0600 CST"
+}
+```

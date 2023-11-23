@@ -14,7 +14,7 @@ func AddTimestamp(payload []byte, headers map[string]string, inputs map[string]s
 		return nil, nil, err
 	}
 
-	payload_json["timestamp"] = time.Now()
+	payload_json["timestamp"] = time.Now().Round(time.Second)
 
 	if modifiedPayload, err := json.Marshal(payload_json); err == nil {
 		return modifiedPayload, headers, nil

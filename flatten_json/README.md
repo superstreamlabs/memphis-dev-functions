@@ -1,17 +1,58 @@
 # Flattening JSON
+## Description
+Flattening JSON takes a JSON event and flattens it so all nested structures are removed from it.  
+## Supported event formats
+JSON 
+## Inputs:
 
-This function's goal is to take a nested JSON entry and flatten it to remove the nesting.
+N/A
 
-## Example Use Case Definition
+## Test event 
 
-A user has multiple services which are producing to a given station, and each of the services produce messages in the same nested JSON format. For down-stream usage from the consumer, it would help if the JSON was flattened.
+### Inputs
 
-The user could attach a Memphis Function to the station so that by making one change, and changing nothing in the producers, the down-stream consumers may consume the messages already flattened.
+N/A
 
-## Input
+### Event:
 
-A JSON message.
+```json
 
-## Output
+{
+    "dict": {
+        "dict_innner_1":{
+            "ice_cream": "is_good",
+            "favorite_flavor": "vanilla",
+            "favorite_topping": "caramel"
+        },
+        "dict_inner_2": {
+            "beef_sticks": "Are yummy",
+            "favorite_brand": "Klements Farm",
+            "brand_location": "Wisconsin :)"
+        }
+    },
+    "array": ["Food", "is", "yummy", ["strawberries", "grapes"], {
+        "favorite_fruit": "black_grapes"
+    }]
+}
 
-A flattened representation of the JSON message. Array items are given as array_key: array_key_{index}. 
+```
+
+## Output to the test event
+
+### Modified Event:
+```json
+{
+    "array_0": "Food",
+    "array_1": "is",
+    "array_2": "yummy",
+    "array_3_0": "strawberries",
+    "array_3_1": "grapes",
+    "beef_sticks": "Are yummy",
+    "brand_location": "Wisconsin :)",
+    "favorite_brand": "Klements Farm",
+    "favorite_flavor": "vanilla",
+    "favorite_fruit": "black_grapes",
+    "favorite_topping": "caramel",
+    "ice_cream": "is_good"
+}
+```

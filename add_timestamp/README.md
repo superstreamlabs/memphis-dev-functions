@@ -1,15 +1,34 @@
 # Add timestamp
+## Description
+Add timestamp adds the current time to an event in the `timestamp` field.
 
-This function's goal is to add a new field, `timestamp` that contains the time when the Function received the message. 
+The format of the timestamp will be in `YYYY-MM-DD HH:MM:SS OFFSET TIMEZONE`.
+## Supported event formats
+JSON 
+## Inputs:
 
-## Example Use Case Definition
+N/A
 
-A user might want to sort events by the time they arrived when visualizing the resulting data. To display this data in sorted order, a timestamp needs to be added but our producing service does not add one. A Memphis Function could be used to add this timestamp to the messages so that they would be able to be visualized the way the user wants.
+## Test event 
 
-## Input
+### Inputs
 
-A JSON message.
+N/A
 
-## Output
+### Event:
 
-The given JSON message with the added `timestamp` entry added that contains a date time formatted timestamp.
+```json
+{
+    "id": 1,
+}
+```
+
+## Output to the test event
+
+### Modified Event:
+```json
+{
+    "id": 1,
+    "timestamp": "2023-12-22 15:30:50 -0600 CST"
+}
+```

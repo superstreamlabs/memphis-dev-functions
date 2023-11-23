@@ -1,0 +1,9 @@
+function_name: xml_to_json
+description: XML to JSON converts an XML message to a JSON message. 
+tags:
+  - tag: xml
+  - tag: json
+  - tag: python
+  - tag: conversion
+runtime: python3.10
+dependencies: requirements.txt
