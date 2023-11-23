@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"strconv"
 
-	"github.com/memphisdev/memphis.go"
+	"github.com/memphisdev/memphis-functions.go/memphis"
 )
 
 type ConversionError struct {

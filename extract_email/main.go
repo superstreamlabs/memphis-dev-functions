@@ -2,7 +2,7 @@ package main
 
 import (
 	"encoding/json"
-	"github.com/memphisdev/memphis.go"
+	"github.com/memphisdev/memphis-functions.go/memphis"
 	"regexp"
 )
 

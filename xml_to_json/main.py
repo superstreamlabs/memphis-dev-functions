@@ -1,6 +1,6 @@
 import xmltodict
 import json
-from memphis.functions import create_function
+from memphis import create_function
 
 def handler(event, context):
     return create_function(event, event_handler)

@@ -1,0 +1,11 @@
+function_name: nodejs-example-function # has to be the same as the folder name
+description: This is a description
+tags: # these tags will appear on the Memphis UI
+  - tag: json
+  - tag: nodejs
+  - tag: awesome
+runtime: nodejs
+inputs: # in case your function requires some input, here you can define the input fields that will be passed to the function
+  - name: function_input_1
+  - name: function_input_2
+handler: index.handler # the entry point to the function in the following pattern <file name>.<function name>

@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"strings"
 
-	"github.com/memphisdev/memphis.go"
+	"github.com/memphisdev/memphis-functions.go/memphis"
 )
 
 func RemoveFields(message []byte, headers map[string]string, inputs map[string]string) ([]byte, map[string]string, error) {
