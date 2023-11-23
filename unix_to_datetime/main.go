@@ -27,7 +27,7 @@ func UnixToDateTime(payload []byte, headers map[string]string, input map[string]
 
 	// Type Assertion
 	if unix_time_64, ok := unix_time.(int64); ok {
-		payload_json[input["out"]] = time.Unix(unix_time_64, 0)
+		payload_json[input["out"]] = time.Unix(unix_time_64, 0).Round(time.Second)
 	} else {
 		return nil, nil, &IntConversionError{message: "key input['timestamp'] returned a value that could not be convereted into an int64"}
 	}

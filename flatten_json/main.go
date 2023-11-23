@@ -38,7 +38,7 @@ func FlattenMessages(message []byte, headers map[string]string, inputs map[strin
 
 	flatten(out_struct, msg_map, "")
 
-	if msgStr, err := json.Marshal(msg_map); err == nil {
+	if msgStr, err := json.Marshal(out_struct); err == nil {
 		return msgStr, headers, nil
 	} else {
 		return nil, nil, err

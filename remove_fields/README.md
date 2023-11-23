@@ -1,19 +1,38 @@
-# Sparcify-Messages
+# Sparcify Messages
+## Description
+Sparcify messages removes the given keys in the events based on the keys given in the `keys` input. 
+## Supported event formats
+JSON 
+## Inputs:
+Input name | Description | Type
+|---|---|---|
+| keys | A comma separated list of values which denotes what fields to remove from the event | string |
+## Test event 
 
-This function's goal is to remove unnnecessary fields from a JSON entry.
+### Inputs
+Input name | Value
+|---|---|
+| keys | key1,key2,key3,key4 
 
-## Example Use Case Definition
+### Event:
 
-A service could be streaming data to Memphis and also logging that data somewhere else. The user could have a lighter, down-stream service that doesn't require all the data and seems to be struggling with meeting throughput requiremenets. 
+```json
+{
+    "id": 1,
+    "key1": "Some data",
+    "key2": "Some more data",
+    "key3": "Even more data",
+    "key4": "Much more data",
+    "key5": "This data is saved"
+}
+```
 
-A Memphis Function could be used to lighten the messages before they reach the consumer. 
+## Output to the test event
 
-## Input
-
-A JSON message and an input `keys` which is a comma separated list of keys to remove from the JSON object.
-
-Here is an example value for the `keys` inputs: `key1, key2, key3`.
-
-## Output
-
-The given JSON message with the field specified in the inputs removed.
+### Modified Event:
+```json
+{
+    "id": 1,
+    "key5": "This data is saved"
+}
+```
