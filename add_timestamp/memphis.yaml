@@ -1,8 +1,0 @@
-function_name: add_timestamp
-description: Adds a timestamp in date time format to all messages. 
-tags:
-  - tag: json
-  - tag: go
-  - tag: unix time
-  - tag: date time
-runtime: go

@@ -1,0 +1,12 @@
+function_name: add-severity
+description: Adds a severity marker to the memphis messages depending on how when messages are being produced
+tags:
+  - tag: json
+  - tag: go
+  - tag: severity
+runtime: go
+inputs: 
+  - name: field
+  - name: cutoff
+  - name: high
+  - name: low

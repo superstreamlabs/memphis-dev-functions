@@ -1,0 +1,10 @@
+function_name: add-geolocation
+description: Takes a geolocation from an input field and places it into the events out field
+tags:
+  - tag: json
+  - tag: go
+  - tag: geolocation enrichment
+runtime: go
+inputs: 
+  - name: geolocation
+  - name: out

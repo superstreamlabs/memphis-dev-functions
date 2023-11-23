@@ -1,0 +1,7 @@
+function_name: flatten-json
+description: Takes a deep JSON objects and flattens it into a 1d representation
+tags:
+  - tag: json
+  - tag: go
+  - tag: flattening
+runtime: go

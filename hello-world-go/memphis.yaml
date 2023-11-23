@@ -1,0 +1,8 @@
+function_name: hello-world-go
+description: Hello world function in Go
+tags:
+  - tag: json
+  - tag: go
+runtime: go
+inputs:
+  - name: field_to_ingest

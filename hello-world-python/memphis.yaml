@@ -1,0 +1,10 @@
+function_name: hello-world-python
+description: Hello world function in Python
+tags:
+  - tag: json
+  - tag: python
+runtime: python3.11
+inputs:
+  - name: field_to_ingest
+handler: main.handler
+dependencies: requirements.txt
