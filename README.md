@@ -27,7 +27,7 @@ Memphis Functions has the capability to seamlessly integrate with various stream
 <strong>This repository hosts public functions created by Memphis.dev and the community,<br>accessible across all Memphis.dev deployments and the Cloud.</strong>
 
 ## How to attach a new function
-1. [Create](https://cloud.memphis.dev) a Memphis.dev Account
+1. [Create](https://cloud.memphis.dev) a Memphis.dev Cloud Account
 2. Create a new station
 3. Attach a new function
 4. Produce some messages
