@@ -1,16 +1,15 @@
 go 1.19
 
-use ./flatten_json
+use ./flatten-json
 
-use ./remove_fields
+use ./remove-fields
 
-use ./add_severity
+use ./add-severity
 
-use ./add_geolocation
+use ./add-geolocation
 
-use ./add_timestamp
+use ./add-timestamp
 
-use ./extract_email
+use ./extract-email
 
-use ./unix_to_datetime
-
+use ./unix-to-datetime
