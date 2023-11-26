@@ -1,6 +1,6 @@
 # Geolocation Enrichment
 ## Description
-Takes a geolocation from the `geolocation` input and places it into the event with the key as the given `out` input.
+Takes an IP from the `geolocation` input and using `https://ip-api.com`, gets geolocation information and places that information into the event with the key as the given `out` input.
 ## Supported event formats
 JSON 
 ## Inputs:
@@ -13,7 +13,7 @@ Input name | Description | Type
 ### Inputs
 Input name | Value
 |---|---|
-| geolocation | 127.0.0.1 
+| geolocation | 156.33.241.5 
 | out | geolocation 
 
 ### Event:
@@ -30,6 +30,21 @@ Input name | Value
 ```json
 {
     "id": 1,
-    "geolocation": "127.0.0.1"
+    "geolocation": {
+        "status": "success",
+        "country": "United States",
+        "countryCode": "US",
+        "region": "DC",
+        "regionName": "District of Columbia",
+        "city": "Washington",
+        "zip": "20003",
+        "lat": 38.8842,
+        "lon": -76.9941,
+        "timezone": "America/New_York",
+        "isp": "US Senate",
+        "org": "United States Senate",
+        "as": "AS3495 US Senate",
+        "query": "156.33.241.5"
+    }
 }
 ```
