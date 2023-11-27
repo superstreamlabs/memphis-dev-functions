@@ -27,15 +27,20 @@ Memphis Functions has the capability to seamlessly integrate with various stream
 <strong>This repository hosts public functions created by Memphis.dev and the community,<br>accessible across all Memphis.dev deployments and the Cloud.</strong>
 
 ## How to attach a new function
-1. [Create](https://cloud.memphis.dev) a Memphis.dev Account
+1. [Create](https://cloud.memphis.dev) a Memphis.dev Cloud Account
 2. Create a new station
 3. Attach a new function
 4. Produce some messages
 
 ## How to develop a new private function
+Memphis functions offers two types of function libraries: Public, and private.<br><br>
+The public library is available by default for each account and is powered by Memphis.dev Functions repository.<br>
+The private library is available for your account only and therefore requires the user to develop functions and integrate its account with the designated repositories.
+<br><br>
 A function comprises code files (based on [Memphis template](https://github.com/memphisdev/memphis-dev-academy/tree/master/memphis-functions)) and a `memphis.yaml` file contained within a unified directory.<br>
 The directory ought to be included in a Git repository that's linked with Memphis.<br>
-Here is a brief hierarchy diagram of how a compatible function file tree should be constructed: <img src="https://github.com/memphisdev/memphis-dev-functions/assets/70286779/57591907-ce74-454c-a9e3-f7348db88c48" width="50%" />
+Here is a brief hierarchy diagram of how a compatible function file tree should be constructed:<br><br>
+<img src="https://github.com/memphisdev/memphis-dev-functions/assets/70286779/57591907-ce74-454c-a9e3-f7348db88c48" width="50%" />
 <br>
 
 ### :rocket: Step-by-step Guide:
@@ -44,7 +49,7 @@ Here is a brief hierarchy diagram of how a compatible function file tree should 
 ```bash
 mkdir my-function && cd my-function && npm init -y
 ```
-3. [Copy](https://api.github.com/events) one of the Memphis Functions templates. For this guide, we chose Node.js
+3. [Copy](https://github.com/memphisdev/function-templates) one of the Memphis Functions templates. For this guide, we chose Node.js
 4. *Required*. Write your logic inside the `eventHandler` block.<br>Incoming events will be accumulated and dispatched to a function collectively in a batch, therefore the wrapper
 ```js
 exports.handler = async (event) => {
