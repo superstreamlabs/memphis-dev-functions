@@ -16,12 +16,19 @@ func FlattenMessages(message []byte, headers map[string]string, inputs map[strin
 				out_map[parent_key] = value
 			case map[string]interface{}:
 				for key, value := range value_typed {
-					recursiveFlatten(out_map, value, key)
+					var new_key string
+					if len(parent_key) > 0{
+						new_key = fmt.Sprintf("%s_%s", parent_key, key)
+					}else{
+						new_key = key
+					}
+
+					recursiveFlatten(out_map, value, new_key)
 				}
 			case []interface{}:
 				for index, value := range value_typed {
-					new_name := fmt.Sprintf("%s_%d", parent_key, index)
-					recursiveFlatten(out_map, value, new_name)
+					new_key := fmt.Sprintf("%s_%d", parent_key, index)
+					recursiveFlatten(out_map, value, new_key)
 				}
 			}
 		}
