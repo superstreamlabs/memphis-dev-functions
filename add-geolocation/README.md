@@ -1,6 +1,6 @@
 # Geolocation Enrichment
 ## Description
-Takes an IP from the `geolocation` input and using `https://ip-api.com`, gets geolocation information and places that information into the event with the key as the given `out` input.
+Takes an IP from the field the `geolocation` input points to and using `https://ip-api.com`, gets geolocation information and places that information into the event with the key as the given `out` input.
 ## Supported event formats
 JSON 
 ## Inputs:
@@ -13,14 +13,15 @@ Input name | Description | Type
 ### Inputs
 Input name | Value
 |---|---|
-| geolocation | 156.33.241.5 
+| geolocation | ip
 | out | geolocation 
 
 ### Event:
 
 ```json
 {
-    "id": 1
+    "id": 1, 
+    "ip": "156.33.241.5"
 }
 ```
 
@@ -30,6 +31,7 @@ Input name | Value
 ```json
 {
     "id": 1,
+    "ip": "156.33.241.5",
     "geolocation": {
         "status": "success",
         "country": "United States",
