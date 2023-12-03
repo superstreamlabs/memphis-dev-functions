@@ -1,0 +1,10 @@
+function_name: split-with-delimiter
+description: Splitting a string based on custom delimiter in Node.js
+tags:
+  - tag: json
+  - tag: nodejs
+runtime: nodejs18.x
+inputs:
+  - name: key_to_split
+  - name: delimiter
+handler: index.handler
