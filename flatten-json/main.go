@@ -18,7 +18,7 @@ func FlattenMessages(message []byte, headers map[string]string, inputs map[strin
 				for key, value := range value_typed {
 					var new_key string
 					if len(parent_key) > 0{
-						new_key = fmt.Sprintf("%s_%s", parent_key, key)
+						new_key = fmt.Sprintf("%s.%s", parent_key, key)
 					}else{
 						new_key = key
 					}
