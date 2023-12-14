@@ -6,7 +6,7 @@ import (
 	"github.com/memphisdev/memphis-functions.go/memphis"
 )
 
-func FlattenMessages(message []byte, headers map[string]string, inputs map[string]string) ([]byte, map[string]string, error) {
+func FlattenMessages(message any, headers map[string]string, inputs map[string]string) (any, map[string]string, error) {
 	flatten := func(out_map map[string]interface{}, value interface{}, parent_key string) {
 		var recursiveFlatten func(map[string]interface{}, interface{}, string)
 
@@ -44,20 +44,18 @@ func FlattenMessages(message []byte, headers map[string]string, inputs map[strin
 		recursiveFlatten(out_map, value, parent_key)
 	}
 
+	as_bytes := message.([]byte)
+
 	var msg_map map[string]interface{}
 	out_struct := make(map[string]interface{})
 
-	if err := json.Unmarshal(message, &msg_map); err != nil {
+	if err := json.Unmarshal(as_bytes, &msg_map); err != nil {
 		return nil, nil, err
 	}
 
 	flatten(out_struct, msg_map, "")
 
-	if msgStr, err := json.Marshal(out_struct); err == nil {
-		return msgStr, headers, nil
-	} else {
-		return nil, nil, err
-	}
+	return msg_map, headers, nil
 }
 
 func main() {

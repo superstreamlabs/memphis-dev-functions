@@ -7,7 +7,7 @@ import (
 	"github.com/memphisdev/memphis-functions.go/memphis"
 )
 
-func RemoveFields(message []byte, headers map[string]string, inputs map[string]string) ([]byte, map[string]string, error) {
+func RemoveFields(message any, headers map[string]string, inputs map[string]string) (any, map[string]string, error) {
 	split_keys := strings.Split(inputs["keys"], ",")
 	keys := make([]string, 0)
 	for _, key := range split_keys {
@@ -34,17 +34,15 @@ func RemoveFields(message []byte, headers map[string]string, inputs map[string]s
 
 	var msg_map map[string]interface{}
 
-	if err := json.Unmarshal(message, &msg_map); err != nil {
+	as_bytes := message.([]byte)
+
+	if err := json.Unmarshal(as_bytes, &msg_map); err != nil {
 		return nil, nil, err
 	}
 
 	RemoveFieldsInner(&msg_map)
 
-	if msgStr, err := json.Marshal(msg_map); err == nil {
-		return msgStr, headers, nil
-	} else {
-		return nil, nil, err
-	}
+	return msg_map, headers, nil
 }
 
 func main() {

@@ -26,9 +26,11 @@ func (e *NoEmailsError) Error() string {
 var email_regex string
 var re *regexp.Regexp
 
-func EventHandler(message []byte, headers map[string]string, inputs map[string]string) ([]byte, map[string]string,  error){
+func EventHandler(message any, headers map[string]string, inputs map[string]string) (any, map[string]string,  error){
+	as_bytes := message.([]byte)
+	
 	var event map[string]interface{}
-	if err := json.Unmarshal(message, &event); err != nil{
+	if err := json.Unmarshal(as_bytes, &event); err != nil{
 		return nil, nil, err
 	}
 
@@ -45,11 +47,7 @@ func EventHandler(message []byte, headers map[string]string, inputs map[string]s
 		return nil, nil, &NoEmailsError{message: "There were no emails found in this event"} 
 	}
 
-	if eventBytes, err := json.Marshal(event); err == nil {
-		return eventBytes, headers, nil	
-	} else{
-		return nil, nil, err
-	}
+	return event, headers, nil
 }
 
 func main() {	

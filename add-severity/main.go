@@ -15,10 +15,12 @@ func (e *ConversionError) Error() string {
 	return e.message
 }
 
-func CheckSeverity(message []byte, headers map[string]string, inputs map[string]string) ([]byte, map[string]string, error) {
+func CheckSeverity(message any, headers map[string]string, inputs map[string]string) (any, map[string]string, error) {
+	as_bytes := message.([]byte)
+	
 	var msgMap map[string]interface{}
 
-	if err := json.Unmarshal([]byte(message), &msgMap); err != nil {
+	if err := json.Unmarshal(as_bytes, &msgMap); err != nil {
 		return nil, nil, err
 	}
 
@@ -42,11 +44,7 @@ func CheckSeverity(message []byte, headers map[string]string, inputs map[string]
 		(msgMap)["severity"] = inputs["low"]
 	}
 
-	if msgStr, err := json.Marshal(msgMap); err == nil {
-		return msgStr, headers, nil
-	} else {
-		return nil, nil, err
-	}
+	return msgMap, headers, nil
 }
 
 func main() {
