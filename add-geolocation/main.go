@@ -17,10 +17,10 @@ func (e *ConversionError) Error() string {
 }
 
 func EventHandler(message any, headers map[string]string, inputs map[string]string) (any, map[string]string,  error){
-	as_byes := message.([]byte)
+	as_bytes := message.([]byte)
 	
 	var event map[string]interface{}
-	if err := json.Unmarshal(as_byes, &event); err != nil{
+	if err := json.Unmarshal(as_bytes, &event); err != nil{
 		return nil, nil, err
 	}
 
