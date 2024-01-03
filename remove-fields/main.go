@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"strings"
 
 	"github.com/memphisdev/memphis-functions.go/memphis"
@@ -32,19 +31,14 @@ func RemoveFields(message any, headers map[string]string, inputs map[string]stri
 		RecursiveRemove(msgMapSubset)
 	}
 
-	var msg_map map[string]interface{}
+	event := message.(*map[string]any)
 
-	as_bytes := message.([]byte)
+	RemoveFieldsInner(event)
 
-	if err := json.Unmarshal(as_bytes, &msg_map); err != nil {
-		return nil, nil, err
-	}
-
-	RemoveFieldsInner(&msg_map)
-
-	return msg_map, headers, nil
+	return event, headers, nil
 }
 
 func main() {
-	memphis.CreateFunction(RemoveFields)
+	var schema map[string]any
+	memphis.CreateFunction(RemoveFields, memphis.PayloadAsJSON(&schema))
 }
